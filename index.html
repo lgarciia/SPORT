@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Mes Séances</title>
+  <meta name="theme-color" content="#0F1115" />
+
+  <!-- Material Symbols (Google) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="safe-pad"></div>
+    <h1 class="app-title">
+      <span class="material-symbols-rounded" aria-hidden="true">fitness_center</span>
+      Mes Séances
+    </h1>
+  </header>
+
+  <main id="app" class="app-main" role="main" aria-live="polite"></main>
+
+  <nav id="app-nav" class="app-nav" aria-label="Navigation">
+    <button id="nav-home" class="nav-btn" data-nav="home" aria-label="Accueil">
+      <span class="material-symbols-rounded" aria-hidden="true">home</span>
+      <span>Accueil</span>
+    </button>
+  </nav>
+
+  <!-- Données : TOUTES TES SÉANCES -->
+  <script id="sessions-data" type="application/json">
+  {
+    "sessions": [
+      {
+        "session_id": "arms_volume_congestion",
+        "name": "Bras – Volume & Congestion",
+        "day": "Lundi",
+        "icon": "fitness_center",
+        "notes": "Séance axée volume et congestion biceps/triceps. Priorité contraction volontaire.",
+        "warmup": {
+          "duration_min": "5-10",
+          "steps": [
+            "5 min rameur ou vélo",
+            "2x20 curls légers",
+            "2x20 extensions triceps poulie légère",
+            "Mobilité poignets, coudes, épaules"
+          ]
+        },
+        "supersets": [
+          {
+            "id": "superset1",
+            "name": "Base & Contrôle",
+            "rest_s": 90,
+            "exercises": [
+              { "id": "curl_barre", "name": "Curl barre droite / EZ", "sets": 4, "reps": "10-12", "tempo": "2-0-2-0", "cues": "Squeeze en haut, descente lente." },
+              { "id": "extension_triceps_corde", "name": "Extension triceps corde", "sets": 4, "reps": "12-15", "tempo": "2-0-2-0", "cues": "Coudes verrouillés, écarte les mains en bas." }
+            ]
+          },
+          {
+            "id": "superset2",
+            "name": "Angle & Étirement",
+            "rest_s": 120,
+            "exercises": [
+              { "id": "curl_incline", "name": "Curl incliné haltères", "sets": 3, "reps": "10-12", "cues": "Contrôle la descente, étirement max." },
+              { "id": "dips_banc", "name": "Dips banc", "sets": 3, "reps": 15, "cues": "Contraction triceps, pas pecs." }
+            ]
+          },
+          {
+            "id": "superset3",
+            "name": "Congestion & Fibres lentes",
+            "rest_s": 120,
+            "exercises": [
+              { "id": "curl_marteau", "name": "Curl marteau", "sets": 3, "reps": "12-15", "cues": "Coudes près du corps, tempo fluide." },
+              { "id": "extension_overhead", "name": "Extension triceps overhead", "sets": 3, "reps": "12-15", "cues": "Stretch bas, contraction en haut." }
+            ]
+          }
+        ],
+        "finisher": {
+          "name": "Pump Maximum",
+          "exercises": [
+            { "id": "curl_21s", "name": "Curl 21s", "protocol": "7 reps bas + 7 reps haut + 7 complets", "sets": 2, "rest_s": 90 },
+            { "id": "dips_pompes_triceps", "name": "Dips/pompes triceps", "protocol": "1 série à l’échec" }
+          ]
+        },
+        "tips": [
+          "Bois pendant la séance",
+          "Contraction volontaire à chaque rep",
+          "Pas de tel entre les supersets"
+        ]
+      },
+      {
+        "session_id": "chest_poulies",
+        "name": "Pecs – Poulies & Douleur-Free",
+        "day": "Mardi",
+        "icon": "favorite",
+        "warmup": {
+          "duration_min": 10,
+          "steps": [
+            "2x20 écartés légers haltères/poulie",
+            "Rotation externe épaule",
+            "1x20 poulie vis-à-vis à vide"
+          ]
+        },
+        "exercises": [
+          { "id": "dev_incline", "name": "Développé haltères incliné (≤30°)", "sets": 4, "reps": "10-12", "tempo": "2-1-2-0", "rest_s": 120, "cues": "Exo le plus lourd, récup 90–120s" },
+          { "id": "poulie_haute", "name": "Poulie vis-à-vis haute", "sets": 3, "reps": "12-15", "rest_s": 60 },
+          { "id": "poulie_basse", "name": "Poulie vis-à-vis basse", "sets": 3, "reps": "12-15", "rest_s": 60 },
+          { "id": "poulie_milieu", "name": "Poulie vis-à-vis milieu", "sets": 3, "reps": 15, "rest_s": 60, "cues": "Étirement + contraction, charge modérée" }
+        ],
+        "finisher": { "name": "FST-7 Style", "protocol": "7x12 reps, 30s repos max", "cues": "Tension constante, charge moyenne" },
+        "tips": [
+          "Repos courts sur poulies (45–60s)",
+          "Repos longs sur développé (90–120s)",
+          "Expire quand tu serres, inspire quand tu ouvres"
+        ]
+      },
+      {
+        "session_id": "back_shoulders",
+        "name": "Dos + Épaules",
+        "day": "Jeudi",
+        "icon": "accessibility_new",
+        "warmup": {
+          "duration_min": 10,
+          "steps": [
+            "Rotations bras + face pulls (2x20)",
+            "2x15 rowing barre légère",
+            "1x20 tirage horizontal"
+          ]
+        },
+        "exercises": [
+          { "id": "tractions", "name": "Tractions pronation (ou tirage vertical)", "sets": 4, "reps": "max ou 10-12", "cues": "Grand dorsal + trapèzes inférieurs" },
+          { "id": "rowing", "name": "Rowing barre/haltères", "sets": 4, "reps": "10-12", "cues": "Contraction scapulaire (machine convergente si bas du dos fragile)" },
+          { "id": "tirage", "name": "Tirage horizontal poulie (neutre/large)", "sets": 3, "reps": "12-15", "cues": "Tire avec les coudes, buste droit" },
+          { "id": "face_pull", "name": "Face Pull corde", "sets": 3, "reps": "15-20", "cues": "Deltoïdes postérieurs + trapèzes post" },
+          { "id": "ele_lat", "name": "Élévations latérales", "sets": 4, "reps": 15, "cues": "Bras semi-fléchis, monte à l’horizontale" },
+          { "id": "oiseau", "name": "Oiseau (poulie basse/haltères)", "sets": 3, "reps": 15, "cues": "Deltoïdes post → largeur arrière" },
+          { "id": "developpe", "name": "Développé haltères/machine (modéré)", "sets": 3, "reps": "10-12", "cues": "Amplitude réduite si douleur, pas trop lourd" }
+        ],
+        "finisher": { "name": "Drop set élévations latérales", "protocol": "12 + 10 + 8 reps en diminuant le poids" },
+        "tips": [
+          "Tractions = largeur du dos",
+          "Élévations latérales : léger mais propre",
+          "Repos ~90s sur lourds, ~45s sur iso"
+        ]
+      },
+      {
+        "session_id": "legs_power_volume",
+        "name": "Jambes – Puissance + Volume + Esthétique",
+        "day": "Vendredi",
+        "icon": "directions_run",
+        "warmup": {
+          "duration_min": 10,
+          "steps": [
+            "5 min vélo/tapis",
+            "Mobilité hanches/genoux/chevilles",
+            "2x20 squats poids du corps",
+            "1x15 fentes statiques / jambe"
+          ]
+        },
+        "exercises": [
+          { "id": "presse", "name": "Presse à cuisse (ou hack squat)", "sets": "4", "reps": "12,10,10,8", "rest_s": 90, "cues": "Talons, largeur épaules, bassin collé" },
+          { "id": "fentes", "name": "Fentes marchées (ou statiques)", "sets": 3, "reps": "20 pas (10/jambe)", "rest_s": 75, "cues": "Fessiers + quadris, cardio monte" },
+          { "id": "leg_curl", "name": "Leg curl (couché/assis)", "sets": 3, "reps": "12-15", "rest_s": 60, "cues": "Contrôle retour, squeeze en haut" },
+          { "id": "hip_thrust", "name": "Hip Thrust (barre/machine)", "sets": 3, "reps": "10-12", "rest_s": 90, "cues": "Fessiers → stabilité + puissance" },
+          { "id": "mollets", "name": "Mollets debout (ou assis)", "sets": 4, "reps": 20, "tempo": "2-1-2-0", "rest_s": 45, "cues": "Amplitude complète" }
+        ],
+        "finisher": { "name": "Squat gobelet", "protocol": "1 série : 20 reps lentes + 10 rapides (PUMP full quadri)" },
+        "tips": [
+          "Reste propre sur fentes & hip thrust",
+          "Hydrate-toi (séance longue)",
+          "Étirements finaux : ischios + hanches"
+        ]
+      },
+      {
+        "session_id": "arms_load_intensity",
+        "name": "Bras – Charge & Intensité",
+        "day": "Samedi",
+        "icon": "sports_mma",
+        "warmup": {
+          "duration_min": 10,
+          "steps": [
+            "5 min rameur/vélo",
+            "2x20 curls + 2x20 extensions poulie",
+            "Mobilité coudes/épaules",
+            "1x20 curl EZ à vide"
+          ]
+        },
+        "exercises": [
+          { "id": "curl_ez", "name": "Curl barre EZ (prise large)", "sets": 4, "reps": "10,8,8,6", "rest_s": 90, "cues": "Coudes fixes, squeeze en haut" },
+          { "id": "barre_front", "name": "Barre front (skull crusher)", "sets": 4, "reps": "10,10,8,6", "rest_s": 90, "cues": "Descends derrière la tête pour + d’étirement" },
+          { "id": "curl_poulie", "name": "Curl poulie basse (corde/barre)", "sets": 3, "reps": "10-12", "tempo": "2-0-2-0", "rest_s": 60, "cues": "Contraction en haut", "special": "Dernière série = drop set (2x)" },
+          { "id": "dips", "name": "Dips lestés (ou PDC)", "sets": 3, "reps": "10-15", "rest_s": 90, "cues": "Buste plutôt droit, dernière série à l’échec" },
+          { "id": "curl_incline", "name": "Curl incliné haltères", "sets": 2, "reps": 15, "cues": "Étirement complet, contrôle max" },
+          { "id": "extension_corde", "name": "Extension triceps corde (overhead/à genoux)", "sets": 2, "reps": 15, "cues": "Étirement + contrôle, coudes serrés" }
+        ],
+        "finisher": {
+          "name": "100 reps challenge",
+          "protocol": "10 curl marteau + 10 pompes triceps → répéter jusqu’à 100 de chaque",
+          "cues": "Repos minimal, bras en feu"
+        },
+        "tips": [
+          "1m30 repos sur lourds, 45–60s sur iso",
+          "Charge + contrôle = croissance",
+          "Contraction volontaire à chaque rep",
+          "Étirements légers en fin de séance"
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <script src="./app.js"></script>
+</body>
+</html>
