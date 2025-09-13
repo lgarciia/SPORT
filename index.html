@@ -14,15 +14,55 @@
 <body>
   <header class="app-header">
     <div class="safe-pad"></div>
-    <h1 class="app-title">
-      <span class="material-symbols-rounded" aria-hidden="true">fitness_center</span>
-      Mes Séances
-    </h1>
+    <div class="topbar">
+      <span class="material-symbols-rounded app-icn" aria-hidden="true">fitness_center</span>
+      <div class="titles">
+        <h1 class="app-title">Mes Séances</h1>
+        <div class="app-sub">Programme hebdo</div>
+      </div>
+      <div class="spacer"></div>
+    </div>
   </header>
 
   <main id="app" class="app-main" role="main" aria-live="polite"></main>
 
-  <!-- Données : TOUTES TES SÉANCES -->
+  <!-- Runner (bottom sheet) -->
+  <div id="runner" class="sheet hidden" aria-hidden="true">
+    <div class="sheet-handle"></div>
+    <div class="sheet-body">
+      <div class="runner-header">
+        <div class="runner-title">
+          <span class="material-symbols-rounded" aria-hidden="true">play_circle</span>
+          <div>
+            <div class="runner-sname" id="runner-session-name"></div>
+            <div class="runner-exname" id="runner-ex-name"></div>
+          </div>
+        </div>
+        <button id="runner-close" class="btn ghost">
+          <span class="material-symbols-rounded">close</span>
+        </button>
+      </div>
+
+      <div id="runner-sets" class="sets-list"></div>
+
+      <div class="timer-block">
+        <div class="timer-display" id="timer-display">00:00</div>
+        <div class="timer-buttons">
+          <button class="chip" data-secs="60"><span class="material-symbols-rounded">timer</span>60s</button>
+          <button class="chip" data-secs="90"><span class="material-symbols-rounded">timer</span>90s</button>
+          <button class="chip" data-secs="120"><span class="material-symbols-rounded">timer</span>120s</button>
+          <button class="chip outline" id="timer-stop"><span class="material-symbols-rounded">stop_circle</span>Stop</button>
+        </div>
+      </div>
+
+      <div class="runner-nav">
+        <button id="runner-prev" class="btn"><span class="material-symbols-rounded">chevron_left</span> Précédent</button>
+        <button id="runner-next" class="btn btn-primary">Suivant <span class="material-symbols-rounded">chevron_right</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Données : TOUTES TES SÉANCES (inchangé) -->
   <script id="sessions-data" type="application/json">
   {
     "sessions": [
