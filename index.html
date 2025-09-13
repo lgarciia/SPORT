@@ -9,13 +9,6 @@
   <!-- Icônes Google Material Symbols -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-  <!-- ▼▼▼ AJOUT PWA (plein écran iPhone) ▼▼▼ -->
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="apple-touch-icon" href="icons/icon-180.png">
-  <!-- ▲▲▲ AJOUT PWA ▲▲▲ -->
-
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
@@ -69,7 +62,7 @@
     </div>
   </div>
 
-  <!-- Données : TOUTES TES SÉANCES (inchangées) -->
+  <!-- Données : TOUTES TES SÉANCES (inchangé) -->
   <script id="sessions-data" type="application/json">
   {
     "sessions": [
@@ -252,15 +245,5 @@
   </script>
 
   <script src="./app.js"></script>
-
-  <!-- ▼▼▼ ENREGISTREMENT SERVICE WORKER (PWA) ▼▼▼ -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./service-worker.js').catch(console.error);
-      });
-    }
-  </script>
-  <!-- ▲▲▲ ENREGISTREMENT SW ▲▲▲ -->
 </body>
 </html>
